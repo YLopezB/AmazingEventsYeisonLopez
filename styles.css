@@ -1,0 +1,73 @@
+.navbar {
+    background-color: #581845;
+}
+
+.logo {
+    height: 30px;
+}
+
+.nav-link {
+    color: #FFC300 !important;
+}
+
+.active {
+    color: #ff5733 !important;
+    font-weight: 600 !important;
+    
+}
+
+.carousel-item img {
+    height: 250px;
+    object-fit: cover;
+}
+
+h2 {
+    text-wrap: wrap !important;
+    color: #c70039 !important;
+    font-size: 40px !important;
+    font-weight: 700 !important;
+}
+
+.footer {
+    color: #FFC300;
+}
+
+.redes {
+    height: 30px;
+}
+
+.card{
+    background-color: #900c3f !important;
+    
+}
+
+.formBox{
+    height: 119px;
+}
+
+.card p{
+    color: #FFC300
+}
+.card h5{
+    color: #ff5733;
+}
+.price{
+    color: #ff5733 !important;
+    
+}
+
+.formP{
+    color: #ff5733
+}
+
+table th, td{
+    background-color: #900c3f !important;
+    color: white !important;
+    padding: 13px !important;
+    text-align: center;
+}
+
+h3 {
+    color: white !important;
+    background-color:#581845;
+}
