@@ -71,3 +71,11 @@ h3 {
     color: white !important;
     background-color:#581845;
 }
+
+.lupa {
+    height: 30px
+}
+
+.category {
+    color: #c70039 !important;
+}
