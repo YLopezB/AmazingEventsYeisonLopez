@@ -17,7 +17,7 @@
 }
 
 .carousel-item img {
-    height: 250px;
+    height: 30vh;
     object-fit: cover;
 }
 
@@ -30,6 +30,7 @@ h2 {
 
 .footer {
     color: #FFC300;
+    height: 2vh;
 }
 
 .redes {
@@ -38,7 +39,10 @@ h2 {
 
 .card{
     background-color: #900c3f !important;
-    
+}
+
+.card2{
+    height: 480px !important;
 }
 
 .formBox{
@@ -78,4 +82,8 @@ h3 {
 
 .category {
     color: #c70039 !important;
+}
+
+.imagenCard{
+    height: 270px;
 }
