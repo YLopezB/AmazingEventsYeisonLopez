@@ -187,33 +187,85 @@ const data = {
     ],
 }
 
-let url = window.location.search
-let urlObjeto = new URLSearchParams(url)
+let contenedorUE = document.getElementById("contenedorUE")
+let contenedorChekbox = document.getElementById("contenedor-checkbox-UE")
+let inputBusqueda = document.getElementById("busqueda")
+let botonBuscar = document.getElementById("botonBuscar")
+let mensaje = document.getElementById("mensaje")
 
-let evento = data.events.find(e => e._id == urlObjeto.get("id"))
-console.log(evento)
-let contenedor = document.getElementById("contenedor-tarjeta")
+function filtrarArreglo(fecha) {
+    return data.events.filter((evento) => new Date(evento.date) > new Date(fecha))
+}
 
-let crearTarjeta = document.createElement("div");
-crearTarjeta.className = "card col-8 m-3";
-crearTarjeta.innerHTML = `
-    <div class="row g-0 justify-content-center">
-        <div class="col-lg-6 col-md-5">
-            <img src="${evento.image}" class="img-fluid rounded-start h-100 p-4 mt-2 mb-5" alt="...">
-        </div>
-        <div class="col-lg-6 col-md-5">
-            <div class="card-body">
-                <h5 class="card-title">${evento.name}</h5>
-                <p class="card-text"><span class="fs-6 fw-bold">Date:</span> ${evento.date}</p>
-                <p class="card-text"><span class="fs-6 fw-bold">Description:</span><br> ${evento.description}</p>
-                <p class="card-text"><span class="fs-6 fw-bold">Category:</span> ${evento.category}</p>
-                <p class="card-text"><span class="fs-6 fw-bold">Place:</span> ${evento.place}</p>
-                <p class="card-text"><span class="fs-6 fw-bold">Capacity:</span> ${evento.capacity}</p>
-                ${evento.estimate ? `<p class="card-text"><span class="fs-6 fw-bold">Estimate:</span> ${evento.estimate}</p>` : ''}
-                <p class="card-text"><span class="fs-6 fw-bold">Price:</span> $${evento.price}</p>
+function mostrarEventos(eventos) {
+    contenedorUE.innerHTML = ''
+    if (eventos.length === 0) {
+        mensaje.textContent = "No se encontró ningún resultado"
+    } else {
+        eventos.forEach(evento => {
+            mensaje.textContent = ''
+            let tarjeta = document.createElement("div")
+            tarjeta.innerHTML = `   
+                <div class="card2 card m-2 p-1" id="${evento._id}">
+                    <img class="imagenCard" src="${evento.image}" class="card-img-top h-50" alt="...">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">${evento.name}</h5>
+                        <p class="card-text">${evento.description}</p>
+                        <div class="d-flex justify-content-between mt-auto">
+                            <p class="price fs-5 fw-bold">$${evento.price}</p>
+                            <a href="Details.html?id=${evento._id}" class="btn btn-primary">Details</a>
+                        </div>
+                    </div>
+                </div>
+            `
+            contenedorUE.appendChild(tarjeta)
+        })
+    }
+}
+
+let listaFiltrada = filtrarArreglo(data.currentDate)
+mostrarEventos(listaFiltrada)
+
+function unificarCategorias() {
+    let categorias = listaFiltrada.reduce((acc, event) => {
+        acc[event.category] = true;
+        return acc;
+    }, {});
+    return Object.keys(categorias);
+}
+
+function crearCheckboxes() {
+    for (let element of unificarCategorias()) {
+        let crearCheckbox = document.createElement("div");
+        crearCheckbox.innerHTML = `
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="${element}" value="${element}">
+                <label class="form-check-label" for="${element}"><p class="category fs6 fw-bold">${element}</p></label>
             </div>
-        </div>
-    </div>
-`;
-contenedor.appendChild(crearTarjeta)
+        `;
+        contenedorChekbox.appendChild(crearCheckbox)
+    }
+}
+
+function obtenerCategoriasSeleccionadas() {
+    let checkboxes = document.querySelectorAll('#contenedor-checkbox-UE input[type="checkbox"]:checked');
+    return Array.from(checkboxes).map(checkbox => checkbox.value);
+}
+
+function aplicarFiltros() {
+    let valorBusqueda = inputBusqueda.value.toLowerCase()
+    let categoriasSeleccionadas = obtenerCategoriasSeleccionadas()
+    let eventosFiltrados = listaFiltrada.filter(evento => {
+        let coincideCategoria = categoriasSeleccionadas.length === 0 || categoriasSeleccionadas.includes(evento.category)
+        let coincideBusqueda = evento.name.toLowerCase().includes(valorBusqueda.toLowerCase()) || evento.description.toLowerCase().includes(valorBusqueda.toLowerCase())
+        return coincideCategoria && coincideBusqueda;
+    })
+    mostrarEventos(eventosFiltrados)
+}
+
+botonBuscar.addEventListener('click', aplicarFiltros)
+contenedorChekbox.addEventListener('change', aplicarFiltros)
+inputBusqueda.addEventListener('keyup', aplicarFiltros)
+
+crearCheckboxes()
 

@@ -9,8 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     
 </head>
-<body>
-  <div>
+<body class="wrapper">
+  <div class="content">
     <header>
         <nav class="navbar navbar-expand-md bg-body-navi ">
             <div class="container-fluid ">
@@ -34,9 +34,6 @@
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="Stats.html">Stats</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="Details.html">Details</a>
                   </li>
                 </ul>
               </div>
@@ -93,155 +90,20 @@
         </button>
       </div>
       <div class="container-fluid p-3">
-        <div class="row justify-content-between"> 
-          <div class="col-12 col-sm-6 col-md-4 col-lg-1">
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                <label class="form-check-label" for="inlineCheckbox1"><p class="category fs6 fw-bold">Category</p></label>
-              </div>
-          </div>  
-          <div class="col-12 col-sm-6 col-md-4 col-lg-1"> 
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                <label class="form-check-label" for="inlineCheckbox2"><p class="category fs6 fw-bold">Category</p></label>
-              </div>
-          </div>  
-          <div class="col-12 col-sm-6 col-md-4 col-lg-1"> 
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                <label class="form-check-label" for="inlineCheckbox3"><p class="category fs6 fw-bold">Category</p></label>
-              </div>
-          </div>
-          <div class="col-12 col-sm-6 col-md-4 col-lg-1">    
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4">
-                <label class="form-check-label" for="inlineCheckbox4"><p class="category fs6 fw-bold">Category</p></label>
-              </div>
-          </div>     
-          <div class="col-12 col-sm-6 col-md-4 col-lg-3">  
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="option5">
-                <label class="form-check-label" for="inlineCheckbox5"><p class="category fs6 fw-bold">Category</p></label>
-              </div>
-          </div>  
-          <div class="col-8 col-sm-6 col-md-4 col-lg-4">    
+        <div class="row"> 
+          <div class="col-3 col-sm-12 col-md-12 col-lg-9 d-flex flex-wrap justify-content" id="contenedor-checkbox"></div>
+          <div class="col-12 col-sm-6 col-md-6 col-lg-3">    
               <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btnLupa btn-outline-success" type="submit"><img class="lupa" src="./Recursos_Amazing_Events_Task_1/lupa.png"></button>
+                <input class="form-control me-2" id="busqueda" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btnLupa btn-outline-success" id="botonBuscar" type="submit">"<img class="lupa" src="./Recursos_Amazing_Events_Task_1/lupa.png" alt="imgagen de lupa"></button>
               </form>
           </div>
         </div>
       </div>
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card2 card m-2" id="1">
-              <img class="imagenCard" src="./Recursos_Amazing_Events_Task_1/food_fair.jpg" class="card-img-top h-50" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Festival of the collectivities</h5>
-                <p class="card-text">Enjoy your favorite dishes from different countries in a unique event for the whole family.</p>
-                <div class="d-flex flex-wrap justify-content-between">
-                <p class="price fs-5 fw-bold">$5</p>
-                <a href="Details.html" class="btn btn-primary">Details</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card2 card m-2" id="2">
-              <img class="imagenCard" src="./Recursos_Amazing_Events_Task_1/outing_to_the_museum.jpg" class="card-img-top h-50" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Art Exhibition</h5>
-                <p class="card-text">Let's go to the art museum for an incredible tour to learn about the largest dinosaurs.</p>
-                <div class="d-flex flex-wrap justify-content-between">
-                <p class="price fs-5 fw-bold">$15</p>
-                <a href="Details.html" class="btn btn-primary">Details</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card2 card m-2" id="3">
-              <img class="imagenCard" src="./Recursos_Amazing_Events_Task_1/costume_party.jpg" class="card-img-top h-50" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Halloween Night</h5>
-                <p class="card-text">Come in your scariest costume character to win amazing prizes.</p>
-                <div class="d-flex flex-wrap justify-content-between">
-                <p class="price fs-5 fw-bold">$12</p>
-                <a href="Details.html" class="btn btn-primary">Details</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card2 card m-2" id="4">
-              <img class="imagenCard" src="./Recursos_Amazing_Events_Task_1/music_concert.jpg" class="card-img-top h-50" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Metallica in concert</h5>
-                <p class="card-text">The only concert of the most emblematic band in the world.</p>
-                <div class="d-flex flex-wrap justify-content-between">
-                <p class="price fs-5 fw-bold">$150</p>
-                <a href="Details.html" class="btn btn-primary">Details</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card2 card m-2" id="5">
-              <img class="imagenCard" src="./Recursos_Amazing_Events_Task_1/marathon.jpg" class="card-img-top h-50" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">10K for life</h5>
-                <p class="card-text">Come and exercise, improve your health and lifestyle.</p>
-                <div class="d-flex flex-wrap justify-content-between">
-                <p class="price fs-5 fw-bold">$3</p>
-                <a href="Details.html" class="btn btn-primary">Details</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card2 card m-2" id="6">
-              <img class="imagenCard" src="./Recursos_Amazing_Events_Task_1/books.jpg" class="card-img-top h-50" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">School Book Fair</h5>
-                <p class="card-text">Bring your unused school book and bring the one you need.</p>
-                <div class="d-flex flex-wrap justify-content-between">
-                <p class="price fs-5 fw-bold">$1</p>
-                <a href="Details.html" class="btn btn-primary">Details</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card2 card m-2" id="7">
-              <img class="imagenCard" src="./Recursos_Amazing_Events_Task_1/cinema.jpg" class="card-img-top h-50" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Avengers</h5>
-                <p class="card-text">Marvel's Avengers 3d premiere the start of an epic saga with your best superheroes.</p>
-                <div class="d-flex flex-wrap justify-content-between">
-                <p class="price fs-5 fw-bold">$250</p>
-                <a href="Details.html" class="btn btn-primary">Details</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> 
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script>
-        $(document).ready(function(){
-            $(".carousel-control-next").click(function(){
-                window.location.href = "PastEvent.html";
-              });
-        });
-        $(document).ready(function(){
-            $(".carousel-control-prev").click(function(){
-                window.location.href = "Details.html";
-              });
-        });
-    </script> 
+      <div class="d-flex flex-wrap justify-content-center" id="contenedor"></div>
+      <p id="mensaje"></p>
     </main>
+  </div>  
     <footer>
       <nav class="navbar navbar-expand-md bg-body-navi ">
         <div class="container-fluid">
@@ -256,5 +118,20 @@
         </div>
       </nav>
     </footer>
+    <script src="home.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+          $(".carousel-control-next").click(function(){
+              window.location.href = "PastEvent.html";
+            });
+      });
+      $(document).ready(function(){
+          $(".carousel-control-prev").click(function(){
+              window.location.href = "Details.html";
+            });
+      });
+    </script> 
   </body>
 </html>
