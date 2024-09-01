@@ -95,6 +95,7 @@ function eventsStatisstics(pastEvents){
     let lowest = [...pastEvents].sort((a, b) => a.percentage - b.percentage)
     let largerCapacity = [...pastEvents].sort((a, b) => b.capacity - a.capacity)
     for(let i = 0; i < 3; i++){
+        let formattedRevenues = largerCapacity[i].capacity.toLocaleString('es-ES')
         let crearTbody = document.createElement("tbody")
         crearTbody.innerHTML = `
                 <tr>
@@ -102,7 +103,7 @@ function eventsStatisstics(pastEvents){
                     <td>${highest[i].name}</td>
                     <td>${lowest[i].percentage}%</td>
                     <td>${lowest[i].name}</td>
-                    <td>${largerCapacity[i].capacity}</td>
+                    <td>${formattedRevenues}</td>
                     <td>${largerCapacity[i].name}</td>
                 </tr>
                 `
@@ -147,10 +148,11 @@ function ByCategory(data) {
     }, {})
     Object.values(ByCategory).forEach(event => {
         let porcentaje = Math.round((event.asis_stimate/event.capacity)*100)
+        let formattedRevenues = event.revenues.toLocaleString('es-ES')
             let fila = document.createElement("tr")
             fila.innerHTML = `
                 <td>${event.category}</td>
-                <td>${event.revenues}</td>
+                <td>${formattedRevenues}</td>
                 <td>${porcentaje}%</td>
             `;
             crearTbody.appendChild(fila)

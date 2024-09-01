@@ -6,7 +6,7 @@ let urlObjeto = new URLSearchParams(url)
 let evento = data.events.find(e => e._id == urlObjeto.get("id"))
 console.log(evento)
 let contenedor = document.getElementById("contenedor-tarjeta")
-
+let formattedRevenues = evento.capacity.toLocaleString('es-ES')
 let crearTarjeta = document.createElement("div");
 crearTarjeta.className = "card col-8 m-3";
 crearTarjeta.innerHTML = `
@@ -21,8 +21,8 @@ crearTarjeta.innerHTML = `
                 <p class="card-text"><span class="fs-6 fw-bold">Description:</span><br> ${evento.description}</p>
                 <p class="card-text"><span class="fs-6 fw-bold">Category:</span> ${evento.category}</p>
                 <p class="card-text"><span class="fs-6 fw-bold">Place:</span> ${evento.place}</p>
-                <p class="card-text"><span class="fs-6 fw-bold">Capacity:</span> ${evento.capacity}</p>
-                ${evento.estimate ? `<p class="card-text"><span class="fs-6 fw-bold">Estimate:</span> ${evento.estimate}</p>` : ''}
+                <p class="card-text"><span class="fs-6 fw-bold" id="formatted-number">Capacity:</span> ${formattedRevenues}</p>
+                ${evento.estimate ? `<p class="card-text" id="formatted-number"><span class="fs-6 fw-bold">Estimate:</span> ${evento.estimate}</p>` : ''}
                 <p class="card-text"><span class="fs-6 fw-bold">Price:</span> $${evento.price}</p>
             </div>
         </div>
