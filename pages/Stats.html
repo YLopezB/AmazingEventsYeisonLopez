@@ -92,28 +92,25 @@
       <div class="row justify-content-center mt-3">
         <div class="col-md-10 mt-2 mb-2">
           <h3 class="fs-3 fw-bold m-0 p-2">Events Statistics</h3>
-          <table class="table table-condensed table-bordered table-hover">
+          <table class="table table-condensed table-bordered table-hover" id="eventsStatissticsTable">
             <thead>
-              <tr class="info">
-                <th>Events with highest % of assitance</th>
-                <th>Events with lowest % of assitance</th>
-                <th>Events with larger capacity</th>
-              </tr>
+                <tr class="info">
+                    <th>%</th>
+                    <th>Events with highest % of assistance</th>
+                    <th>%</th>
+                    <th>Events with lowest % of assistance</th>
+                    <th>Capacity</th>
+                    <th>Events with larger capacity</th>
+                    
+                </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
+        </table>
         </div>
       </div>
       <div class="row justify-content-center">
         <div class="col-md-10">
           <h3 class="fs-3 fw-bold m-0 p-2">Upcoming events statistics by category</h3>
-          <table class="table table-condensed table-bordered table-hover">
+          <table class="table table-condensed table-bordered table-hover" id="UpcomingByCategory">
             <thead>
               <tr class="info">
                 <th>Categories</th>
@@ -121,25 +118,13 @@
                 <th>Percentage of assitance</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-            </tbody>
           </table>
         </div>
       </div>
       <div class="row justify-content-center">
         <div class="col-md-10">
-          <h3 class="fs-3 fw-bold m-0 p-2">Past events statistics by</h3>
-          <table class="table table-condensed table-bordered table-hover">
+          <h3 class="fs-3 fw-bold m-0 p-2">Past events statistics by category</h3>
+          <table class="table table-condensed table-bordered table-hover" id="PastByCategory">
             <thead>
               <tr class="info">
                 <th>Categories</th>
@@ -147,18 +132,6 @@
                 <th>Percentage of assitance</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-            </tbody>
           </table>
         </div>
       </div>
@@ -178,6 +151,8 @@
         </div>
       </nav>
     </footer>
+    <script src="../js/stats.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
@@ -191,6 +166,5 @@
               });
         });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

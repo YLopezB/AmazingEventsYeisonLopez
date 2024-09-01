@@ -1,6 +1,6 @@
 import * as modules from '../modules/modules.js';
 modules.obtenerDatos().then(data => {
-    let url = window.location.search
+let url = window.location.search
 let urlObjeto = new URLSearchParams(url)
 
 let evento = data.events.find(e => e._id == urlObjeto.get("id"))

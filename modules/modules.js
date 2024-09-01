@@ -3,12 +3,13 @@ let contenedorChekbox = document.getElementById("contenedor-checkbox")
 let inputBusqueda = document.getElementById("busqueda")
 let botonBuscar = document.getElementById("botonBuscar")
 let mensaje = document.getElementById("mensaje")
+let contenedorTbody = document.getElementById("eventsStatissticsTable")
+let contenedorPast = document.getElementById("PastByCategory")
+let contenedorUp = document.getElementById("UpcomingByCategory")
 
 export function obtenerDatos() {
     return fetch("https://aulamindhub.github.io/amazing-api/events.json")
-        .then(response => response.json()).then(data => {
-        return data
-    })
+        .then(response => response.json())
 }
 
 export function crearPagina(data){
@@ -81,3 +82,109 @@ botonBuscar.addEventListener('click', aplicarFiltros)
 mostrarEventos(data)
 crearCheckboxes()
 }
+
+export function stats(data) {
+    let [pastEvents, upcomingEvents] = filterCurrentDate(data)
+    eventsStatisstics(pastEvents)
+    contenedorUp.appendChild(ByCategory(upcomingEvents))
+    contenedorPast.appendChild(ByCategory(pastEvents))
+}
+
+function eventsStatisstics(pastEvents){
+    let highest = [...pastEvents].sort((a, b) => b.percentage - a.percentage)
+    let lowest = [...pastEvents].sort((a, b) => a.percentage - b.percentage)
+    let largerCapacity = [...pastEvents].sort((a, b) => b.capacity - a.capacity)
+    for(let i = 0; i < 3; i++){
+        let crearTbody = document.createElement("tbody")
+        crearTbody.innerHTML = `
+                <tr>
+                    <td>${highest[i].percentage}%</td>
+                    <td>${highest[i].name}</td>
+                    <td>${lowest[i].percentage}%</td>
+                    <td>${lowest[i].name}</td>
+                    <td>${largerCapacity[i].capacity}</td>
+                    <td>${largerCapacity[i].name}</td>
+                </tr>
+                `
+        contenedorTbody.appendChild(crearTbody)
+    }
+}
+
+function ByCategory(data) {
+    let crearTbody = document.createElement("tbody")
+    let ByCategory = data.reduce((acc, event) => {
+        let {categoria, assistance, price, capacity, estimate} = event
+        if (estimate === undefined) {
+            let revenue = assistance * price
+            if (!acc[categoria]) {//si el evento es pasado
+                acc[categoria] = {
+                    revenues: revenue,
+                    asis_stimate: assistance,
+                    capacity: capacity,
+                    category : categoria
+                }
+            } else {
+                acc[categoria].revenues += revenue
+                acc[categoria].asis_stimate += assistance
+                acc[categoria].capacity += capacity
+            }
+        }else{//si el evento es futuro
+            let revenue = estimate * price
+            if (!acc[categoria]) {
+                acc[categoria] = {
+                    revenues: revenue,
+                    asis_stimate: estimate,
+                    capacity: capacity,
+                    category : categoria
+                }
+            } else {
+                acc[categoria].revenues += revenue
+                acc[categoria].asis_stimate += estimate
+                acc[categoria].capacity += capacity
+            }
+        }
+        return acc;
+    }, {})
+    Object.values(ByCategory).forEach(event => {
+        let porcentaje = Math.round((event.asis_stimate/event.capacity)*100)
+            let fila = document.createElement("tr")
+            fila.innerHTML = `
+                <td>${event.category}</td>
+                <td>${event.revenues}</td>
+                <td>${porcentaje}%</td>
+            `;
+            crearTbody.appendChild(fila)
+    });
+    return crearTbody
+}
+
+function filterCurrentDate(data) {
+    let pastEvents = data.events.filter((event) => new Date(event.date) < new Date(data.currentDate)).map((event) => {
+        let asistencia = event.assistance 
+        let capacidad = event.capacity
+        let porcentaje = Math.round((asistencia/capacidad)*100)
+        return {
+            categoria: event.category,
+            name: event.name,
+            percentage: porcentaje,
+            capacity: event.capacity,
+            assistance: event.assistance,
+            price: event.price
+            }
+    })
+    let upEvents = data.events.filter((event) => new Date(event.date) > new Date(data.currentDate)).map((event) => {
+        let asistencia = event.assistance 
+        let capacidad = event.capacity
+        let porcentaje = Math.round((asistencia/capacidad)*100)
+        return {
+            categoria: event.category,
+            name: event.name,
+            percentage: porcentaje,
+            capacity: event.capacity,
+            estimate: event.estimate,
+            price: event.price
+            }
+    })
+    return [pastEvents, upEvents]
+}
+
