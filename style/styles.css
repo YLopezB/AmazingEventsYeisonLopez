@@ -6,6 +6,15 @@
     height: 30px;
 }
 
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.content {
+    flex: 1;
+}
+
 .nav-link {
     color: #FFC300 !important;
 }
@@ -31,7 +40,7 @@ h2 {
 .footer {
     color: #FFC300;
     height: 2vh;
-}
+    }
 
 .redes {
     height: 30px;
@@ -42,7 +51,8 @@ h2 {
 }
 
 .card2{
-    height: 480px !important;
+    height: 450px !important;
+    width: 350px;
 }
 
 .formBox{
@@ -85,5 +95,5 @@ h3 {
 }
 
 .imagenCard{
-    height: 270px;
+    height: 250px;
 }
